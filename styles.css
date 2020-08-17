@@ -1,0 +1,22 @@
+/*body {
+	
+	background-image: url("https://www.airfrance.fr/FR/common/common/img/tbaf/news/OPO/livraria-lello-la-librairie-historique/OPO-livraria-lello-la-librairie-historique-2_1-1024x512.jpg");
+	background-size: cover;
+	background-blend-mode: lighten;
+}*/
+h1 {
+	position: relative;
+	text-align: center;
+	color: #368DC5;
+	font-family: Impact, Charcoal, sans-serif;
+	z-index: 2;
+}
+#background {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    opacity: 0.4;
+}
