@@ -26,6 +26,7 @@ h1 {
     opacity: 0.4;
 }
 h2 {
+	grid-area: top;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	text-align: center;
 	font-size: 40px;
@@ -40,11 +41,15 @@ h2 {
 .thirdBook {
 	grid-area: third;
 }
-.bookList {
+.booksList {
 	display: grid;
-	grid-template-columns: 100px 100px 100px;
-	grid-template-rows: 100px;
- 	grid-template-areas: 'first second third';
- 	grid-gap: 10px;
- 	padding: 10px;
+	grid-template-columns: 200px 200px 200px;
+	grid-template-rows: 100px 300px;
+ 	grid-template-areas:
+ 	'top top top' 
+ 	'first second third';
+ 	 grid-gap: 10px;
+ 	 justify-content: center;
+  
+  padding: 10px;
 }
