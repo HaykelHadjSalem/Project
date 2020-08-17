@@ -4,12 +4,16 @@
 	background-size: cover;
 	background-blend-mode: lighten;
 }*/
-h1 {
+#all {
 	position: relative;
+	z-index: 2;
+}
+h1 {
+	
 	text-align: center;
 	color: #368DC5;
 	font-family: Impact, Charcoal, sans-serif;
-	z-index: 2;
+	
 }
 #background {
 	position: absolute;
