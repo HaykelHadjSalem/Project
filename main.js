@@ -55,4 +55,23 @@ var books = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book
   	var $link = $('<a></a>')
   	addImg($img, $link, arr[i]);
   }
+$('#display').click(function() {
+ 	$("#matched_books").empty();
+ 	$("#matched_books").show();
+	var query = $('#query').val().toLowerCase();
+	if(query.length > 3) {
+		var matchedBooks = books.filter(book => book.title.toLowerCase().indexOf(query) >= 0 
+			|| book.author.toLowerCase().indexOf(query) >= 0);
+	 	for(var i = 0; i < matchedBooks.length; i++) {
+	 		var $book = $('<a></a><br>');
+	 		$book.text(matchedBooks[i].title + ' By ' + matchedBooks[i].author + ', ' + matchedBooks[i].year + '.');
+	 		$book.attr('href', matchedBooks[i].link).attr('target', '_blank');
+	 		$book.appendTo($("#matched_books"));
+	 	}
+	}
+});
+ $('#clear').click(function() {
+ 	$("#matched_books").hide();
+ })
  });
+
