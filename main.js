@@ -1,3 +1,4 @@
+//factory function to create a book object with needed properties.
 function makeBook(title, author, genre, pageNumber, year, language, imgSrc, link) {
 	return {
 		title: title,
@@ -10,6 +11,7 @@ function makeBook(title, author, genre, pageNumber, year, language, imgSrc, link
 		link: link
 	};
 }
+//creating books from our library.
 var book1 = makeBook("Harry Potter and the Sorcerer's Stone", 'J. K. Rowling', 'Fantasy',256 ,1997, 
 	'English', "https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg", 
 	"https://www.amazon.com/gp/product/059035342X/");
@@ -40,14 +42,19 @@ var book9 = makeBook("Hamlet", "William Shakespeare", "Tragedy", 432, 1603,
 var book10 = makeBook("The Girl with the Dragon Tattoo", "Stieg Larsson", "Thriller", 672, 2005, 
 	"Swedish", "https://upload.wikimedia.org/wikipedia/en/b/bc/Thegirlwiththedragontattoo.jpg", 
 	"https://www.amazon.com/gp/product/0307949486/");
+//creating an array of all books which represents the library inventary.
 var books = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book10];
- 
+//the function addImg takes an image element, an anchor element and a class, it generates a random index and then add an image with 
+//a link to the respective book to append it at the end to the div that has the selected class. 
  function addImg($img, $link, $class) {
  	var index = Math.floor(Math.random() * books.length);
  	$img.attr('src', books[index].imgSrc).attr('alt', books[index].title).css('height', '300px').css('width', '200px');
  	$link.attr('href', books[index].link).attr('target', '_blank');
  	$link.append($img).appendTo($class);
  }
+ //displayBooks is a function that given an array of books objects and an element's id, loops through the array, 
+ //creates an anchor element which contains book information linking to the respective page 
+ //and append it to the div with the selected id.
  function displayBooks(books, $id) {
  	for(var i = 0; i < books.length; i++) {
 	 		var $book = $('<a></a><br>');
@@ -56,8 +63,10 @@ var books = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book
 	 		$book.appendTo($id);
 	 	}
  }
+ //creating an array with div's class of the booksList class.
  var arr = ['.firstBook', '.secondBook', '.thirdBook'];
  $(document).ready(function() {
+ 	//adding three random images to link to the respective books
   for(var i = 0; i < 3; i++) {
   	var $img = $('<img>');
   	var $link = $('<a></a>')
