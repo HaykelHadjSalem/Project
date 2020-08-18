@@ -72,6 +72,7 @@ var books = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book
   	var $link = $('<a></a>')
   	addImg($img, $link, arr[i]);
   }
+//clicking on display button the function will filter the array of books that match the query input and display each book information. 
 $('#display').click(function() {
  	$("#matched_books").empty();
  	$("#matched_books").show();
@@ -82,9 +83,11 @@ $('#display').click(function() {
 	 	displayBooks(matchedBooks, "#matched_books");
 	}
 });
+//hide the div with matched_books id.
  $('#clear').click(function() {
  	$("#matched_books").hide();
  });
+ //the function will display the books that have the selected genre and the respective page number.
  $('#check').click(function() {
  	$('#selected_books').empty();
  	$('#selected_books').show();
