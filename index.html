@@ -22,7 +22,32 @@
 <button id="display">Display</button>
 <button id="clear">Clear</button>
 <div id="matched_books"></div>
-<div id="genre_page"></div>
+<h3>Find a book by genre and page number</h3>
+<div id="genre_page">
+	<div id="genre">
+		<input type="radio" id="fantasy" name="genre" value="Fantasy">
+		<label for="fantasy">Fantasy</label><br>
+		<input type="radio" id="gothic" name="genre" value="Gothic">
+		<label for="gothic">Gothic</label><br>
+		<input type="radio" id="scifi" name="genre" value="Science Fiction">
+		<label for="scifi">Science Fiction</label><br>
+		<input type="radio" id="tragedy" name="genre" value="Tragedy">
+		<label for="tragedy">Tragedy</label><br>
+		<input type="radio" id="autobiography" name="genre" value="Autobiography">
+		<label for="autobiography">Autobiography</label><br>
+		<input type="radio" id="thriller" name="genre" value="Thriller">
+		<label for="thriller">Thriller</label>
+	</div>
+	<div id="page">
+		<label for="from"><strong>Page number from:</strong></label>
+		<input type="number" id="from" min="218" max="1178">
+		<label for="to"><strong>To:</strong></label>
+		<input type="number" id="to" min="218" max="1178">
+	</div>
+</div>
+<button id="check">Check</button>
+<button id="Clear">Clear</button><br>
+<div id="selected_books"></div>
 </div>
 <img src="https://www.airfrance.fr/FR/common/common/img/tbaf/news/OPO/livraria-lello-la-librairie-historique/OPO-livraria-lello-la-librairie-historique-2_1-1024x512.jpg" id='background'>
 </body>

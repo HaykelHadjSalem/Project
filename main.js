@@ -1,9 +1,9 @@
-function makeBook(title, author, genre, pageNumbers, year, language, imgSrc, link) {
+function makeBook(title, author, genre, pageNumber, year, language, imgSrc, link) {
 	return {
 		title: title,
 		author: author,
 		genre: genre,
-		pageNumbers: pageNumbers,
+		pageNumber: pageNumber,
 		year: year,
 		language: language,
 		imgSrc: imgSrc,
@@ -13,7 +13,7 @@ function makeBook(title, author, genre, pageNumbers, year, language, imgSrc, lin
 var book1 = makeBook("Harry Potter and the Sorcerer's Stone", 'J. K. Rowling', 'Fantasy',256 ,1997, 
 	'English', "https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg", 
 	"https://www.amazon.com/gp/product/059035342X/");
-var book2 = makeBook("To Kill a Mockingbird", "Harper Lee", "Southern Gothic", 281, 1960,
+var book2 = makeBook("To Kill a Mockingbird", "Harper Lee", "Gothic", 281, 1960,
 	'English', "https://images-na.ssl-images-amazon.com/images/I/51N5qVjuKAL._SX309_BO1,204,203,200_.jpg", 
 	"https://www.amazon.com/gp/product/0446310786/");
 var book3 = makeBook("The Hobbit", "J. R. R. Tolkien", 'Fantasy', 310, 1937, 
@@ -31,7 +31,7 @@ var book6 = makeBook("The Great Gatsby", "F. Scott Fitzgerald", "Tragedy", 218, 
 var book7 = makeBook("The Diary of A Young Girl", "Anne Frank", "Autobiography", 320, 1947, 
 	"Dutch", "https://images-na.ssl-images-amazon.com/images/I/51EPqZ9kFnL._SX309_BO1,204,203,200_.jpg", 
 	"https://www.amazon.com/gp/product/0307594009/");
-var book8 = makeBook("The Hunger Games", "Suzanne Collins", "Science fiction", 374, 2008, 
+var book8 = makeBook("The Hunger Games", "Suzanne Collins", "Science Fiction", 374, 2008, 
 	"English", "https://images-na.ssl-images-amazon.com/images/I/41WAJbx1e2L._SX325_BO1,204,203,200_.jpg", 
 	"https://www.amazon.com/gp/product/0439023521/");
 var book9 = makeBook("Hamlet", "William Shakespeare", "Tragedy", 432, 1603, 
@@ -48,6 +48,14 @@ var books = [book1, book2, book3, book4, book5, book6, book7, book8, book9, book
  	$link.attr('href', books[index].link).attr('target', '_blank');
  	$link.append($img).appendTo($class);
  }
+ function displayBooks(books, $id) {
+ 	for(var i = 0; i < books.length; i++) {
+	 		var $book = $('<a></a><br>');
+	 		$book.text(books[i].title + ' By ' + books[i].author + ', ' + books[i].year + '.');
+	 		$book.attr('href', books[i].link).attr('target', '_blank');
+	 		$book.appendTo($id);
+	 	}
+ }
  var arr = ['.firstBook', '.secondBook', '.thirdBook'];
  $(document).ready(function() {
   for(var i = 0; i < 3; i++) {
@@ -62,16 +70,23 @@ $('#display').click(function() {
 	if(query.length > 3) {
 		var matchedBooks = books.filter(book => book.title.toLowerCase().indexOf(query) >= 0 
 			|| book.author.toLowerCase().indexOf(query) >= 0);
-	 	for(var i = 0; i < matchedBooks.length; i++) {
-	 		var $book = $('<a></a><br>');
-	 		$book.text(matchedBooks[i].title + ' By ' + matchedBooks[i].author + ', ' + matchedBooks[i].year + '.');
-	 		$book.attr('href', matchedBooks[i].link).attr('target', '_blank');
-	 		$book.appendTo($("#matched_books"));
-	 	}
+	 	displayBooks(matchedBooks, "#matched_books");
 	}
 });
  $('#clear').click(function() {
  	$("#matched_books").hide();
- })
+ });
+ $('#check').click(function() {
+ 	$('#selected_books').empty();
+ 	$('#selected_books').show();
+ 	var $genre = $("input[name='genre']:checked").val();
+ 	var from = $('#from').val();
+ 	var to = $('#to').val();
+ 	var matchedBooks = books.filter(book => book.genre === $genre && book.pageNumber >= from && book.pageNumber <= to);
+ 	displayBooks(matchedBooks,"#selected_books");
+ });
+ $('#Clear').click(function() {
+ 	$("#selected_books").hide();
+ });
  });
 

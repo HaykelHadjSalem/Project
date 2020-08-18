@@ -43,8 +43,21 @@ h2 {
  	grid-template-areas:
  	'top top top' 
  	'first second third';
- 	 grid-gap: 10px;
- 	 justify-content: center;
+ 	grid-gap: 10px;
+ 	justify-content: center;
   
-  padding: 10px;
+}
+#genre {
+	grid-area: genre;
+}
+#page {
+	grid-area: page;
+}
+#genre_page {
+	display: grid;
+	grid-template-columns: 300px 400px;
+	grid-template-rows: 120px;
+ 	grid-template-areas: 'genre page';
+ 	grid-gap: 20px;
+	padding: 5px;
 }
